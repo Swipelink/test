@@ -17,9 +17,9 @@
       position: relative;
       z-index: 0;
       border-radius: 16px;
-      padding: 2px;
-      width: 300px;
-      height: 90px;
+      padding: 4px;
+      width: 360px;
+      height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -45,17 +45,45 @@
     }
 
     .rainbow-content {
+      position: relative;
       background: white;
       border-radius: 14px;
       width: 100%;
       height: 100%;
-      font-size: 1.75rem;
+      font-size: 2rem;
       font-weight: 600;
       color: #1F1F1F;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
       display: flex;
       align-items: center;
       justify-content: center;
+      overflow: hidden;
+    }
+
+    .rainbow-content::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(270deg, #6A00FF, #0037FF, #00A3FF, #00FFD1, #6A00FF);
+      background-size: 400% 400%;
+      animation: rainbow 8s ease infinite;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 0;
+    }
+
+    .rainbow-content:hover::after {
+      opacity: 1;
+    }
+
+    .rainbow-content span {
+      position: relative;
+      z-index: 10;
+      transition: color 0.4s ease;
+    }
+
+    .rainbow-content:hover span {
+      color: white;
     }
 
     .logo-container {
@@ -66,7 +94,7 @@
     }
 
     .logo-container img {
-      width: 160px;
+      width: 192px; /* 160px * 1.2 */
       height: auto;
     }
 
@@ -81,12 +109,12 @@
       }
 
       .rainbow-content {
-        font-size: 1.5rem;
+        font-size: 1.75rem;
         padding: 1rem 2rem;
       }
 
       .logo-container img {
-        width: 120px;
+        width: 144px; /* 120px * 1.2 */
       }
     }
   </style>
@@ -95,7 +123,7 @@
 
   <!-- Logo en haut à gauche -->
   <div class="logo-container">
-    <img src="swipelink.svg" alt="Swipelink Logo">
+    <img src="swipelink.png" alt="Swipelink Logo">
   </div>
 
   <!-- Contenu principal -->
@@ -106,14 +134,14 @@
 
     <div class="flex button-group justify-center items-center gap-10 sm:gap-16 flex-wrap">
       <!-- Bouton Candidat -->
-      <button class="candidat-btn px-12 py-6 sm:px-16 sm:py-6 rounded-xl border-2 border-[#1F008B] text-gray-800 font-semibold text-2xl sm:text-3xl transition-all duration-300 hover:bg-[#1F008B] hover:text-white shadow-md hover:shadow-xl w-[300px] h-[90px]">
+      <button class="candidat-btn px-16 py-7 sm:px-20 sm:py-8 rounded-xl border-2 border-[#1F008B] text-gray-800 font-semibold text-3xl sm:text-4xl transition-all duration-300 hover:bg-[#1F008B] hover:text-white shadow-md hover:shadow-xl w-[360px] h-[110px]">
         Candidat
       </button>
 
       <!-- Bouton Recruteur -->
       <div class="rainbow-border rounded-xl">
-        <button class="rainbow-content text-2xl sm:text-3xl shadow-md hover:shadow-xl rounded-xl">
-          Recruteur
+        <button class="rainbow-content text-3xl sm:text-4xl shadow-md hover:shadow-xl rounded-xl">
+          <span>Recruteur</span>
         </button>
       </div>
     </div>
